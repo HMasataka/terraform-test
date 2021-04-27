@@ -1,23 +1,16 @@
-terraform {
-  required_providers {
-    docker = {
-      source = "kreuzwerker/docker"
-    }
-  }
+provider "google" {
+  project     = "scarlet-terraform"
+  region      = "us-central1"
+  zone        = "us-central1-c"
 }
 
-provider "docker" {}
+resource "google_storage_bucket" "private-bucket" {
+  name          = "terraform-instance"
+  location      = "asia-northeast1"
+  storage_class = "REGIONAL"
 
-resource "docker_image" "nginx" {
-  name         = "nginx:latest"
-  keep_locally = false
-}
-
-resource "docker_container" "nginx" {
-  image = docker_image.nginx.latest
-  name  = "tutorial"
-  ports {
-    internal = 80
-    external = 8000
+  labels = {
+    app = "test-app"
+    env = "test"
   }
 }
