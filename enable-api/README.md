@@ -1,5 +1,7 @@
 # Enable API
 
+serviceで指定したAPIを有効化する
+
 ## Requirement
 
 ```bash
