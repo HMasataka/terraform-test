@@ -1,5 +1,5 @@
 provider "google" {
-  project = "scarlet-terraform"
+  project = "scarlet-303003"
   region  = "us-central1"
   zone    = "us-central1-c"
 }
